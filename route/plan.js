@@ -26,7 +26,7 @@ router.post("/generate", async (req, res) => {
   // serialize forces these rows to execute consecutively!!!
   db.serialize(() => {
     db.run("DROP TABLE IF EXISTS plan")
-      .run("CREATE TABLE plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0)");
+      .run("CREATE TABLE plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0, note TEXT)");
   });
 
   const start = getStartDate(req.body["start-new"]);
@@ -123,12 +123,12 @@ function savePlan(plan) {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database("meal.db");
     
-    const stmt = db.prepare("UPDATE plan SET meal = ?, cooked = ? WHERE date = ?");
+    const stmt = db.prepare("UPDATE plan SET meal = ?, cooked = ?, note = ? WHERE date = ?");
     for (let d = 0; d < plan.date.length; d++) {
       if (plan.meal[d]) {
-        stmt.run([plan.meal[d], isCooked(plan["d" + d]), plan.date[d]]);
+        stmt.run([plan.meal[d], isCooked(plan["d" + d]), plan.note[d], plan.date[d]]);
       } else {
-        stmt.run([null, 0, plan.date[d]]);
+        stmt.run([null, 0, plan.note[d], plan.date[d]]);
       }
     }
     stmt.finalize(() => {

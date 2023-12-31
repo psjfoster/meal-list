@@ -108,6 +108,10 @@ input[type=number] {
 	width: 3rem;
 }
 
+input.note {
+	width: 9rem;
+}
+
 table, td, th {
 	border: 10px solid #00000000;
 	vertical-align: middle;

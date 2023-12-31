@@ -48,6 +48,7 @@
           <img title="book" src="/static/book.svg" height="25" width="25">
         </th>
         <th>🧑‍🍳</th>
+        <th>📝</th>
       </tr>
       <% for (d in plan) { %>
         <tr>
@@ -70,6 +71,10 @@
               <% if (plan[d].cooked) { %>
                 checked 
               <% } %> />
+          </td>
+          <td>
+            <input class="note" type="text" name="note" placeholder="notes"
+              value="<%= plan[d].note %>"/>
           </td>
         </tr>
       <% } %>
