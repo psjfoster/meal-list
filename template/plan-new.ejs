@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/list.css" type="text/css">
+  <title>New plan</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>New plan</h1>
+    <h2><a href="/menu">Menu</a></h2>
+  </header>
+
+  <table>
+    <%# blank row for styling %>
+    <tr style="display: none;"></tr>
+    <tr>
+      <td>
+        <img title="date" src="/static/date.svg" height="25px" width="25px">
+      </td>
+      <td class="name">
+        <label for="start-new">
+          Start date
+        </label>
+      </td>
+      <td>
+        <input form="new-plan" name="start-new" type="date" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img title="date" src="/static/count.svg" height="25px" width="25px">
+      </td>
+      <td class="name">
+        <label for="start-new">
+          Number of days
+        </label>
+      </td>
+      <td>
+        <input form="new-plan" name="plan-days" type="number"
+          min="5" max="14" step="1" value="7" />
+      </td>
+    </tr>
+    <tr>
+      <td>✏️</td>
+      <td class="name">Generate plan</td>
+      <td>
+        <input form="new-plan" id="generate" type="submit" value="Generate">
+      </td>
+    </tr>
+  </table>
+    <form id="new-plan" hidden 
+      action="/plan/generate" method="post" enctype="application/x-www-form-urlencoded">
+    </form>
+  </div>
+</body>
+
+</html>

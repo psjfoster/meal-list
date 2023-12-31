@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/list.css" type="text/css">
+  <title>Plan</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Plan</h1>
+    <h2><a href="/menu">Menu</a></h2>
+  </header>
+
+  <div class="buttons">
+    <input form="save-plan" id="save" type="submit" value="Save plan" />
+    <input form="new-plan" name="new-week" type="submit" value="New plan" />
+
+    <!-- 
+    // commit button was for testing only, left here for now just in case!
+    <form id="commit" hidden action="/plan/commit" method="post"
+      enctype="application/x-www-form-urlencoded">
+      <input type="submit" value="Commit plan"/>
+    </form>
+    -->
+
+    <% if (saved) { %>
+      <p id="saved">Changes saved.</p>
+    <% } %>
+
+    <form id="new-plan" hidden action="/plan/new" method="post"
+      enctype="application/x-www-form-urlencoded"
+      onsubmit="return confirm('This will add/update all cooked meals in this plan to your menu, ' +
+                                 'before deleting it and creating a new empty one.\n\n' +
+                                 'Make sure to check and save this plan before continuing!')">
+    </form>
+  </div>
+
+  <table>
+    <form id="save-plan" hidden action="/plan" method="post" enctype="application/x-www-form-urlencoded">
+      <tr>
+        <th>
+          <img title="date" src="/static/date.svg" height="25" width="25">
+        </th>
+        <th class="name">
+          <img title="book" src="/static/book.svg" height="25" width="25">
+        </th>
+        <th>🧑‍🍳</th>
+      </tr>
+      <% for (d in plan) { %>
+        <tr>
+          <td>
+            <%= plan[d].fDate %>
+            <input type="hidden" name="date" value="<%= plan[d].date %>"/>
+          </td>
+          <td>
+            <input aria-label="meal-list" list="<%= plan[d].date %>" 
+              name="meal" value="<%= plan[d].meal %>">
+              <datalist id="<%= plan[d].date %>">
+                <% for (let i=0; i < rows.length; i++) { %>
+                  <option value="<%= rows[i].name %>">
+                <% } %>
+              </datalist>
+            </input>
+          </td>
+          <td>
+            <input type="checkbox" name="d<%= d %>" value="cooked"
+              <% if (plan[d].cooked) { %>
+                checked 
+              <% } %> />
+          </td>
+        </tr>
+      <% } %>
+    </form>
+  </table>
+</body>
+
+</html>

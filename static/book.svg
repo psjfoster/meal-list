@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30"
+   height="30"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <rect
+     id="pages"
+     style="fill:#949494;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:30"
+     width="20.664032"
+     height="4.6251559"
+     x="4.6679688"
+     y="22.589844" />
+  <path
+     id="binding"
+     style="color:#000000;fill:#571aff;fill-opacity:1;stroke-dashoffset:30;-inkscape-stroke:none"
+     d="m 4.6679688,1 c -0.8309984,0 -1.5,0.6690016 -1.5,1.5 v 24.714844 c 0,0.830998 0.6690017,1.5 1.5,1.5 H 26.832031 v -7.625 H 6.1679688 V 1 Z m 0,21.589844 H 25.332031 v 4.625 H 4.6679688 Z" />
+  <rect
+     id="tab3"
+     style="fill:#ad0074;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:30"
+     width="2"
+     height="1.5"
+     x="26.832031"
+     y="7.5987597" />
+  <rect
+     id="tab2"
+     style="fill:#75a11b;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:30"
+     width="2"
+     height="1.5"
+     x="26.832031"
+     y="6.3961926" />
+  <rect
+     id="tab1"
+     style="fill:#ec0404;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:30"
+     width="2"
+     height="1.5"
+     x="26.832031"
+     y="3.3812184" />
+  <rect
+     id="cover"
+     style="fill:#8052ff;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:30"
+     width="20.664032"
+     height="20.089844"
+     x="6.1679988"
+     y="1" />
+</svg>

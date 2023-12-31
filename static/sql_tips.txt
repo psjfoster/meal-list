@@ -1,0 +1,12 @@
+[x] if meal is filled:
+[x] update meal name and cooked status at that date
+[x] if meal is cooked
+
+CREATE TABLE meals (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL, times_cooked INTEGER DEFAULT 0, last_cooked TEXT);
+CREATE TABLE plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0);
+
+INSERT INTO meals (name) SELECT DISTINCT meal FROM plan WHERE meal IS NOT NULL EXCEPT SELECT name FROM meals;
+
+UPDATE meals SET times_cooked = times_cooked + 1, last_cooked = '2023-12-30' WHERE name = 'Bangers and mash';
+
+SELECT meal, COUNT(*), MAX(date) FROM plan WHERE meal IS NOT NULL AND cooked = 1 GROUP BY meal;
