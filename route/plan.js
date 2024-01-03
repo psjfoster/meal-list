@@ -23,26 +23,29 @@ router.post("/generate", async (req, res) => {
   await commitToMenu();
   const db = new sqlite3.Database("meal.db");
   
+  const start = getStartDate(req.body["start-new"]);
+  const noOfDays = req.body["plan-days"];
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  
   // serialize forces these rows to execute consecutively!!!
   db.serialize(() => {
     db.run("DROP TABLE IF EXISTS plan")
       .run("CREATE TABLE plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0, note TEXT)");
-  });
 
-  const start = getStartDate(req.body["start-new"]);
-  const noOfDays = req.body["plan-days"];
-  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-  for (let d = 0; d < noOfDays; d++) {
-    const date = new Date(start + (d * 86400000));
-    const dString = date.toISOString().substring(0, 10);
-    const fDate = weekday[date.getDay()] + 
-                    " " +
-                    date.getDate() + 
-                    getNth(date.getDate());
-    db.run("INSERT INTO plan (date, fDate) VALUES (?, ?)",
-      [dString, fDate]);
-  }
-  res.redirect("/plan");
+    const stmt = db.prepare("INSERT INTO plan (date, fDate) VALUES (?, ?)");
+    for (let d = 0; d < noOfDays; d++) {
+      const date = new Date(start + (d * 86400000));
+      const dString = date.toISOString().substring(0, 10);
+      const fDate = weekday[date.getDay()] + 
+                      " " +
+                      date.getDate() + 
+                      getNth(date.getDate());
+      stmt.run([dString, fDate]);
+    }
+    stmt.finalize(() => {
+      res.redirect("/plan");
+    });
+  });
 });
 
 router.post("/new", (req, res) => {
