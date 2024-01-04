@@ -1,7 +1,3 @@
-[x] if meal is filled:
-[x] update meal name and cooked status at that date
-[x] if meal is cooked
-
 CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL, times_cooked INTEGER DEFAULT 0, last_cooked TEXT);
 CREATE TABLE IF NOT EXISTS plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0);
 
