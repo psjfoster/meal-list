@@ -2,8 +2,8 @@
 [x] update meal name and cooked status at that date
 [x] if meal is cooked
 
-CREATE TABLE meals (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL, times_cooked INTEGER DEFAULT 0, last_cooked TEXT);
-CREATE TABLE plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL, times_cooked INTEGER DEFAULT 0, last_cooked TEXT);
+CREATE TABLE IF NOT EXISTS plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0);
 
 INSERT INTO meals (name) SELECT DISTINCT meal FROM plan WHERE meal IS NOT NULL EXCEPT SELECT name FROM meals;
 

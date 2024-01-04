@@ -51,7 +51,9 @@ function deleteRows(req) {
 function getRows() {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database("meal.db");
-    db.all("SELECT * FROM meals ORDER BY name ASC",
+    db.serialize(() => {
+      db.run("CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL, times_cooked INTEGER DEFAULT 0, last_cooked TEXT)")
+        .all("SELECT * FROM meals ORDER BY name ASC",
       (err, rows) => {
         if (err || rows == undefined) {
           reject("Sorry there was an error.");
@@ -59,6 +61,7 @@ function getRows() {
           resolve(rows);
         }
       });
+    });
   });
 }
 

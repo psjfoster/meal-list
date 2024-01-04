@@ -76,7 +76,9 @@ function commitToMenu() {
 function getDates() {
   return new Promise((resolve, reject) => {
     const db = new sqlite3.Database("meal.db");
-    db.all("SELECT * FROM plan ORDER BY date ASC",
+    db.serialize(() => {
+      db.run("CREATE TABLE IF NOT EXISTS plan (date TEXT NOT NULL, fDate TEXT NOT NULL, meal TEXT, cooked INTEGER DEFAULT 0)")
+        .all("SELECT * FROM plan ORDER BY date ASC",
       (err, dates) => {
         if (err || dates == undefined) {
           reject("Sorry there was an error.");
@@ -84,6 +86,7 @@ function getDates() {
           resolve(dates);
         }
       });
+    });
   });
 }
 
