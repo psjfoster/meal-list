@@ -51,16 +51,16 @@ table {
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	margin-left: 5px;
-	margin-top: 5px;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
+	width: 100%;
+	max-width: 400px;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	display: inline;
 	font-size: 2rem;
 	font-weight: bold;
-	margin-bottom: 5px;
-	margin-left: 10px;
 }
 
 h2, h2 a:link, h2 a:visited {
@@ -73,43 +73,33 @@ h2 a:hover {
 	color: #6161ff;
 }
 
-h3 {
-	font-size: 1.3rem;
-	font-weight: bold;
-}
-
-h4 {
-	font-style: italic;
-	font-size: 0.9rem;
-}
-
-header {
-	display: flexbox;
-}
-
-div.card-box {
-	width: -moz-fit-content;
-	width: fit-content;
-}
-
-div.card {
-	background-color: #f2f2f2;
+div {
+	align-items: center;
 	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	padding: 10px;
-	margin-left: 10px;
-	margin-top: 1rem;
-	width: 200px;
+}
+
+div.header {
+	align-items: flex-end;
+	gap: 1rem;
 }
 
 div.buttons {
 	align-items: center;
 	display: flex;
-  gap: 1rem;
 	height: 2.5rem;
 	line-height: 2.5rem;
-	margin-left: 10px;
+}
+
+div.filters {
+	align-items: center;
+	display: flex;
+	justify-content: space-evenly;
+	height: 3rem;
+}
+
+input#meal {
+	max-width: 50%;
+	width: 10rem;
 }
 
 p {
@@ -137,10 +127,6 @@ input.note {
 table, td, th {
 	border: 10px solid #00000000;
 	vertical-align: middle;
-}
-
-table {
-	max-width: 200px;
 }
 
 td {
