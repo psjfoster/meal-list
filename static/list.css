@@ -126,10 +126,6 @@ p {
   to { opacity: 0%; }
 }
 
-input {
-	font-size: 0.9rem;
-}
-
 input[type=number] {
 	width: 3rem;
 }
@@ -143,6 +139,10 @@ table, td, th {
 	vertical-align: middle;
 }
 
+table {
+	max-width: 200px;
+}
+
 td {
 	text-align: center;
 }
@@ -153,18 +153,16 @@ td.name {
 }
 
 th {
+	min-width: 2rem;
   font-size: 1.3rem;
 }
 
-th.count {
-	width: 3rem;
-}
-
 th.date {
-  width: 7rem;
+  min-width: 6rem;
 }
 
 th.name {
+	min-width: 12rem;
 	text-align: left;
 }
 

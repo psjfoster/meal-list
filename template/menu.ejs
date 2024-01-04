@@ -38,13 +38,15 @@
     <h1>Menu</h1>
     <h2><a href="/plan">Plan</a></h2>
   </header>
+  <input id="meal" form="add-form" name="meal" type="text" pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
+    title="Letters, numbers and spaces only" onchange="enableAdd()" />
+  <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
   <table>
     <tr>
       <th><img title="bin" src="/static/bin.svg" height="25" width="25" /></th>
       <th class="name"><img title="book" src="/static/book.svg" height="25" width="25"></th>
       <th class="count"><img title="count" src="/static/count.svg" height="25" width="25"></th>
       <th class="date"><img title="date" src="/static/date.svg" height="25" width="25"></th>
-      <th>➕</th>
     </tr>
     <% for (let i = 0; i < rows.length; i++) { %>
       <tr>
@@ -62,25 +64,14 @@
         </td>
         <td></td>
       </tr>
-      <% } %>
-        <tr>
-          <td class="del">
-            <input id="del" form="del-form" type="submit" value="Delete" disabled />
-          </td>
-          <td class="name">
-            <input id="meal" form="add-form" name="meal" type="text" pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
-              title="Letters, numbers and spaces only" onchange="enableAdd()" />
-          </td>
-          <td></td>
-          <td></td>
-          <td><input id="add" form="add-form" name="add" type="submit" value="Add" disabled /></td>
-          <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
-          </form>
-          <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
-            onsubmit="return confirm('Are you sure you want to delete these meals?')">
-          </form>
-        </tr>
+    <% } %>
   </table>
+  <input id="del" form="del-form" type="submit" value="Delete" disabled />
+  <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
+  </form>
+  <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
+    onsubmit="return confirm('Are you sure you want to delete these meals?')">
+  </form>
 </body>
 
 </html>
