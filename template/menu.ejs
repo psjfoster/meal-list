@@ -34,49 +34,26 @@
 </head>
 
 <body>
-  <div class="header">
+  <header>
     <h1>Menu</h1>
     <h2><a href="/plan">Plan</a></h2>
-  </div>
-  <div class="filters">
-    <img title="Meal name" src="/static/book.svg" height="25" width="25">
-    <img title="Number of times cooked" src="/static/count.svg" height="25" width="25">
-    <img title="Last cooked" src="/static/date.svg" height="25" width="25">
-  </div>
-  <div class="add-meal">
-    <input id="meal" form="add-form" name="meal" type="text" 
-      pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
-      title="Letters, numbers and spaces only" onchange="enableAdd()" />
-    <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
-  </div>
-  <div class="del-meals">
-    <input id="del" form="del-form" type="submit" value="Delete selected" disabled />
-  </div>
-  <div class="card">
-    <div class="name">
-      <h2>Meal one</h2>
-    </div>
-    <div class="cooked">49</div>
-    <div class="cooked">2023-12-31</div>
-  </div>
-  <div class="meal">
-    <input title="delete" form="del-form" type="checkbox" name="testCheck" onchange="enableDelete()" />
-  </div>
+  </header>
   <table>
     <tr>
-      <td class="del">
-      </td>
-      <td class="name">
-        Ham egg and chips
-      </td>
-      <td class="cooked">
-        49 times
-      </td>
-      <td class="cooked">
-        2023-12-31
-      </td>
+      <th><img title="bin" src="/static/bin.svg" height="25" width="25" /></th>
+      <th class="name"><img title="book" src="/static/book.svg" height="25" width="25"></th>
+      <th class="count"><img title="count" src="/static/count.svg" height="25" width="25"></th>
+      <th class="date"><img title="date" src="/static/date.svg" height="25" width="25"></th>
     </tr>
-    <% for (let i=0; i < rows.length; i++) { %>
+    <tr>
+      <td>
+        <input title="delete" form="del-form" type="checkbox" name="test" onchange="enableDelete()" />
+      </td>
+      <td class="name">A long meal name not yet conceived</td>
+      <td>888</td>
+      <td>8888-88-88</td>
+    </tr>
+    <% for (let i = 0; i < rows.length; i++) { %>
       <tr>
         <td class="del">
           <input title="delete" form="del-form" type="checkbox" name="<%= rows[i].id %>" onchange="enableDelete()" />
@@ -84,20 +61,24 @@
         <td class="name">
           <%= rows[i].name %>
         </td>
-        <td class="cooked">
+        <td class="n">
           <%= rows[i].times_cooked %>
         </td>
-        <td class="cooked">
+        <td>
           <%= rows[i].last_cooked %>
         </td>
       </tr>
-      <% } %>
+    <% } %>
   </table>
-  <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
-  </form>
-  <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
-    onsubmit="return confirm('Are you sure you want to delete these meals?')">
-  </form>
+      <input id="del" form="del-form" type="submit" value="Delete" disabled /><br>
+      <input id="meal" form="add-form" name="meal" type="text" pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
+              title="Letters, numbers and spaces only" onchange="enableAdd()" />
+      <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
+      <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
+      </form>
+      <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
+        onsubmit="return confirm('Are you sure you want to delete these meals?')">
+      </form>
 </body>
 
 </html>
