@@ -30,7 +30,7 @@
         add.setAttribute("disabled", "disabled");
       }
     }
-  </script>
+    </script>
 </head>
 
 <body>
@@ -38,6 +38,11 @@
     <h1>Menu</h1>
     <h2><a href="/plan">Plan</a></h2>
   </header>
+  <div class="buttons">
+    <input id="meal" form="add-form" name="meal" type="text" pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
+      title="Letters, numbers and spaces only" onchange="enableAdd()" />
+    <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
+  </div>
   <table>
     <tr>
       <th><img title="bin" src="/static/bin.svg" height="25" width="25" /></th>
@@ -70,15 +75,14 @@
       </tr>
     <% } %>
   </table>
-      <input id="del" form="del-form" type="submit" value="Delete" disabled /><br>
-      <input id="meal" form="add-form" name="meal" type="text" pattern="[a-zA-Z0-9 ]+" placeholder="New meal"
-              title="Letters, numbers and spaces only" onchange="enableAdd()" />
-      <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
-      <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
-      </form>
-      <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
-        onsubmit="return confirm('Are you sure you want to delete these meals?')">
-      </form>
+  <div class="buttons">
+    <input id="del" form="del-form" type="submit" value="Delete selected" disabled />
+  </div>
+    <form id="add-form" action="/menu" method="post" enctype="application/x-www-form-urlencoded">
+    </form>
+    <form id="del-form" action="/menu/delete" method="post" enctype="application/x-www-form-urlencoded"
+      onsubmit="return confirm('Are you sure you want to delete these meals?')">
+    </form>
 </body>
 
 </html>
