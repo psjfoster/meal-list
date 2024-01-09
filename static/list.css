@@ -51,16 +51,16 @@ table {
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	margin-left: 5px;
-	margin-top: 5px;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 h1, h2 {
 	display: inline;
 	font-size: 2rem;
 	font-weight: bold;
-	margin-bottom: 5px;
-	margin-left: 10px;
+	margin-bottom: 0.5rem;
+	margin-left: 0.5rem;
 }
 
 h2, h2 a:link, h2 a:visited {
@@ -71,16 +71,6 @@ h2, h2 a:link, h2 a:visited {
 
 h2 a:hover {
 	color: #6161ff;
-}
-
-h3 {
-	font-size: 1.3rem;
-	font-weight: bold;
-}
-
-h4 {
-	font-style: italic;
-	font-size: 0.9rem;
 }
 
 div.buttons {
@@ -106,42 +96,13 @@ p {
   to { opacity: 0%; }
 }
 
-input {
-	font-size: 0.9rem;
-}
-
-input[type=number] {
-	width: 3rem;
-}
-
-input.note {
-	width: 9rem;
-}
-
-table, td, th {
-	border: 10px solid #00000000;
+table, th, td {
+	border: 0.5rem solid #00000000;
 	vertical-align: middle;
 }
 
-td {
-	text-align: center;
-}
-
-td.name {
-	text-align: left;
-	max-width: 50%;
-}
-
 th {
-  font-size: 1.3rem;
-}
-
-th.count {
-	width: 3rem;
-}
-
-th.date {
-  width: 7rem;
+	font-size: 1.3rem;
 }
 
 th.name {
@@ -154,4 +115,20 @@ tr {
 
 tr:nth-child(odd) > td {
 	background-color: #f2f2f2;
+}
+
+td {
+	text-align: center;
+}
+
+td.date {
+	font-size: small;
+}
+
+td.name {
+	text-align: left;
+}
+
+input.note {
+	max-width: 6rem;
 }
