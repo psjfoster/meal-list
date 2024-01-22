@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", (req, res) => {
   let mealName = req.body.meal;
-  mealName = mealName.replaceAll(/[^a-zA-Z0-9 ]/g, "").toLowerCase().trim();
+  mealName = mealName.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().trim();
   let index = mealName.search(/[a-z]/);
   mealName = (mealName.substring(0, index) + mealName[index].toUpperCase() + mealName.substring(index + 1));
 
