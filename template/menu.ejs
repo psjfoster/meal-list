@@ -32,11 +32,11 @@
       }
     }
     
-    const sort = [];
     
     function sortTable(column) {
       // thanks to https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table!
       const table = document.getElementById("menu-table");
+      const sort = [null, "desc", "asc", "asc"];
 
       if (sort[column] == null || sort[column] == "desc") {
         sort[column] = "asc";
