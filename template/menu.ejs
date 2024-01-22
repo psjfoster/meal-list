@@ -32,18 +32,17 @@
       }
     }
     
-    
+    const sort = [null, "desc", "asc", "asc"];
+
     function sortTable(column) {
       // thanks to https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table!
       const table = document.getElementById("menu-table");
-      const sort = [null, "desc", "asc", "asc"];
 
       if (sort[column] == null || sort[column] == "desc") {
         sort[column] = "asc";
       } else {
         sort[column] = "desc";
       }
-      console.log(sort);
       
       // loop until no switching is done:
       let switching = true;
