@@ -6,10 +6,11 @@
   <link rel="stylesheet" href="/static/list.css" type="text/css">
   <title>Menu</title>
   <script>
+    
     function enableDelete() {
       const checked = document.querySelectorAll("input[type=checkbox]:checked");
       const del = document.getElementById("del");
-
+      
       if (checked.length > 0) {
         del.removeAttribute("disabled");
       } else {
@@ -21,13 +22,51 @@
       const meal = document.getElementById("meal");
       const add = document.getElementById("add");
       const name = meal.value;
-
+      
       console.log(name.trim());
-
+      
       if (name.trim() != "") {
         add.removeAttribute("disabled");
       } else {
         add.setAttribute("disabled", "disabled");
+      }
+    }
+    
+    const sort = [];
+    
+    function sortTable(column) {
+      // thanks to https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table!
+      const table = document.getElementById("menu-table");
+
+      if (sort[column] == null || sort[column] == "desc") {
+        sort[column] = "asc";
+      } else {
+        sort[column] = "desc";
+      }
+      console.log(sort);
+      
+      // loop until no switching is done:
+      let switching = true;
+
+      while (switching) {
+        const rows = table.rows;
+        let i;
+        let shouldSwitch = false;
+        switching = false;
+        
+        for (i = 1; i < (rows.length - 1); i++) { // 0 = headers!
+          const x = rows[i].getElementsByTagName("td")[column];
+          const y = rows[i + 1].getElementsByTagName("td")[column];
+          if ((sort[column] == "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) ||
+            (sort[column] == "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
       }
     }
     </script>
@@ -43,12 +82,15 @@
       title="Letters, numbers and spaces only" onchange="enableAdd()" />
     <input id="add" form="add-form" name="add" type="submit" value="Add" disabled />
   </div>
-  <table>
+  <table id="menu-table">
     <tr>
       <th><img title="bin" src="/static/bin.svg" height="25" width="25" /></th>
-      <th class="name"><img title="book" src="/static/book.svg" height="25" width="25"></th>
-      <th class="count"><img title="count" src="/static/count.svg" height="25" width="25"></th>
-      <th class="date"><img title="date" src="/static/date.svg" height="25" width="25"></th>
+      <th class="name"><img title="book" src="/static/book.svg" height="25" width="25"
+        onclick="sortTable(1)"></th>
+      <th class="count"><img title="count" src="/static/count.svg" height="25" width="25"
+        onclick="sortTable(2)"></th>
+      <th class="date"><img title="date" src="/static/date.svg" height="25" width="25"
+        onclick="sortTable(3)"></th>
     </tr>
     <% for (let i = 0; i < rows.length; i++) { %>
       <tr>
